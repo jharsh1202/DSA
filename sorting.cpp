@@ -4,9 +4,9 @@ using namespace std;
 int search_element_index(int arr[], int val, int size);
 int binary_search_element_index(int arr[], int val, int size);
 void selection_sort(int arr[], int size);
+void bubble_sort(int arr[], int size);
 void print_array(int arr[], int size);
 int* swap_arr_val(int arr[], int f, int s);
-void bubble_sort(int arr[], int size);
 
 int main() {
     int arr[] = {3131,521,246,442,1513,32};
