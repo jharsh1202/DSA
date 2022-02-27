@@ -1,5 +1,30 @@
 #include </Library/Developer/CommandLineTools/usr/lib/clang/13.0.0/include/bits/stdc++.h>
 using namespace std;
+
+//--- Binary Tree Node START
+struct BinaryTree_Node{
+    BinaryTree_Node* left;
+    BinaryTree_Node* right;
+    int data;
+    BinaryTree_Node(int val){
+        left = NULL;
+        right = NULL;
+        data = val;
+    }
+};
+//--- Binary Tree Node END
+
+//--- Linked List Node START
+struct LL_Node{
+    LL_Node* next;
+    int data;
+    LL_Node(int val){
+        next = NULL;
+        data = val;
+    }
+};
+//---Linked List Node START
+
 //--- Structs START -----
 //Binary tree node
 struct Node{
@@ -16,7 +41,11 @@ struct Node{
 
 
 //Trees
+LL_Node* create_linked_list(int arr[], int size);
+void print_linked_list(LL_Node*);
+
 class BinaryTree;
+
 
 //------ recusion ------
 //https://www.youtube.com/watch?v=9rt-hFcXd0M&ab_channel=ApnaCollege
@@ -45,6 +74,10 @@ void print_sequence_reverse(int N);
 
 //------ algorithms ------
 //Sorting
+int partition(int arr[], int f, int l);
+void quicksort(int arr[], int f, int l);
+void merge(int arr[], int f, int mid, int l);
+void merge_sort(int arr[], int f, int l);
 void insertion_sort(int arr[], int size);
 void bubble_sort(int arr[], int size); //bubble sort- O(n^2)
 void selection_sort(int arr[], int size); //selection sort - O(n^2)
@@ -61,8 +94,6 @@ int* swap_arr_val(int arr[], int f, int s); //swap two array values
 //-------- TREE END -------------- create visual notes
 //1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1
 class BinaryTree{
-    //build tree
-    //print tree
 public:
     int idx;
     
@@ -119,12 +150,19 @@ public:
 
 //main
 int main() {
-//    int arr[] = {1,23,45,646,690,2534,3433};//{43,5,32,2,3,65,3,4,6};
-//    int size = sizeof(arr)/sizeof(arr[0]);
-    string str = "har";//"picphgtpftipipibgvjpiip";//xxaaxaabbxbcccxcddxdd
-    vector<string> keys_letter_combs = {"", "./", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-    create_words_from_phone_keys(keys_letter_combs, 2, 3, "");
-    print_substring_with_ascii(str, ""); //Task 7 couldn't understand que and and both ref-1 @28mins
+    int arr[] = {19, 29, 10, 824,5,17,14,534,53,1558,1699,103, 3,4, 5,3,35,333};//{23,1,646,45,2534,690,3433};//{43,5,32,2,3,65,3,4,6};
+    int size = sizeof(arr)/sizeof(arr[0]);
+//    LL_Node* root = create_linked_list(arr, size);
+//    print_linked_list(root);
+//    string str = "har";//"picphgtpftipipibgvjpiip";//xxaaxaabbxbcccxcddxdd
+//    merge(arr, 0, (0+size-1)/2, size-1);
+//    merge_sort(arr, 0, size-1);
+//    quicksort(arr, 0, size-1);
+//    print_array(arr, size);
+    
+//    vector<string> keys_letter_combs = {"", "./", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+//    create_words_from_phone_keys(keys_letter_combs, 2, 3, "");
+//    print_substring_with_ascii(str, ""); //Task 7 couldn't understand que and and both ref-1 @28mins
 //    print_substring(str, "");
 //    cout<<move_all_x_to_end(str);
     
@@ -175,6 +213,32 @@ int main() {
 
 //static memory allocation, First in Last out, every variable allocation is by default in stack
 //-------- STACK START --------------
+
+//Binary Tree END
+//BinaryTree_Node* create_binary_tree(){
+//
+//}
+
+//Binary Tree START
+
+//End Linked List
+LL_Node* create_linked_list(int arr[], int size){
+    LL_Node* root = new LL_Node(arr[0]);
+    LL_Node* root_copy = root;
+    for (int i=1; i<size; i++) {
+        root->next = new LL_Node(arr[i]);
+        root = root->next;
+    }
+    return root_copy;
+}
+
+void print_linked_list(LL_Node* root){
+    while (root!=NULL) {
+        cout<<root->data<<", ";
+        root = root->next;
+    }
+}
+//Start Linked List
 
 //-------- Recusion END -------------
 
@@ -315,6 +379,82 @@ void print_sequence(int N) {
 
 
 //-------- SORTING END --------
+
+int partition(int arr[], int f, int l){ //quick sort helper
+    cout<<"f "<<f<<endl;
+    int pivot = arr[l];
+    int i = f-1;
+    for (int index=f; index<l; index++) {
+        if (arr[index]<pivot) {
+            i++;
+            swap_arr_val(arr, i, index);
+        }
+    }
+    int pivot_index = i+1;
+    swap_arr_val(arr, pivot_index, l);
+    return pivot_index;
+}
+
+void quicksort(int arr[], int f, int l){  //quick sort
+    if(f<l){
+        int pivot_index = partition(arr, f, l);
+        quicksort(arr, f, pivot_index-1);
+        quicksort(arr, pivot_index+1, l);
+    }
+}
+
+void merge(int arr[], int f, int mid, int l){//f, mid        mid+1, l  //merge sort helper
+    int l_size = mid-f+1;
+    int r_size = l-mid;
+    int l_arr[l_size];
+    int r_arr[r_size];
+    
+    for (int i=0; i<l_size; i++) {
+        l_arr[i]=arr[f+i];
+    }
+    for (int i=0; i<r_size; i++) {
+        r_arr[i] = arr[mid+1+i];
+    }
+    cout<<"full ";
+    print_array(arr, l-f+1);
+    cout<<"left ";
+    print_array(l_arr, l_size);
+    cout<<"right ";
+    print_array(r_arr, r_size);
+    
+    int i=f;
+    int lft=0;
+    int rgt=0;
+    
+    while((lft<l_size)&&(rgt<r_size)){
+        if (l_arr[lft]>r_arr[rgt]) {
+            arr[i]=r_arr[rgt]; rgt++; i++;
+        } else {
+            arr[i]=l_arr[lft]; lft++; i++;
+        }
+    }
+    
+    while (lft<l_size) {
+        arr[i] = l_arr[lft];
+        i++; lft++;
+    }
+    
+    while (rgt<r_size) {
+        arr[i] = r_arr[rgt];
+        i++; rgt++;
+    }
+    
+}
+
+void merge_sort(int arr[], int f, int l){ //merge sort
+    print_array(arr, l-f+1);
+    if (f < l) {
+        int mid = (f+l)/2;
+        merge_sort(arr, f, mid);
+        merge_sort(arr, mid+1, l);
+        merge(arr, f, mid, l);
+    }
+}
 
 
 void insertion_sort(int arr[], int size) {
