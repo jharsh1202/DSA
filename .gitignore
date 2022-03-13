@@ -1,1 +1,4 @@
 main
+a.out
+*.prob
+.vscode/settings.json
