@@ -27,6 +27,7 @@ LL_Node* reverse_k_linked_list(LL_Node*);
 LL_Node* reverse_k_linked_list(LL_Node*, int);
 LL_Node* find_intersection(LL_Node*, LL_Node*);
 LL_Node* merge_sorted(LL_Node* , LL_Node*);
+LL_Node* put_even_before_odd(LL_Node*);
 bool detect_cycle(LL_Node*); //floyd's cycle detection, hare and tortoise algorithm //write proof
 //------ algorithms ------
 
@@ -251,6 +252,22 @@ LL_Node* merge_sorted(LL_Node* head1, LL_Node* head2){
     
     if ((head1->data)<(head2->data)) return head1;
     else return head2;
+}
+
+LL_Node* put_even_before_odd(LL_Node* head){ // see video sol https://www.youtube.com/watch?v=TaNfBSbpX_o&list=PLfqMhTWNBTe0b2nM6JHVCnAkhQRGiZMSJ&index=66&ab_channel=ApnaCollege
+    LL_Node* node = head;
+    LL_Node* odd = head;
+    LL_Node* even = head->next;
+    LL_Node* evenStart = even; //even start
+    node = node->next->next;
+    int i=3;
+    while (node) {
+        if(i%2) {odd->next=node; odd=odd->next; }
+        else {even->next=node; even=even->next; }
+        node = node->next; i++;
+    } odd->next=NULL; even->next=head;
+    print_linked_list(evenStart);
+    return evenStart;
 }
 //Start Linked List
 
