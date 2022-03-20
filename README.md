@@ -1,3 +1,4 @@
+<pre>
 # DSA
 
 *Data Structures*
@@ -76,3 +77,5 @@
 
 What's inside *stdc++.h*
 - it's just a header file which is a collection of most included libraries. So you don't have to include all libraries everytime.
+
+</pre>
