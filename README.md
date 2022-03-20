@@ -1,3 +1,4 @@
+<pre>
 # DSA
 
 *Data Structures*
@@ -19,7 +20,7 @@
     - find_intersection 
     - merge_sorte 
     - put_even_before_odd
-    - detect_cycle//floyd's cycle detection, hare and tortoise 
+    - detect_cycle            //floyd's cycle detection, hare and tortoise 
 
 
 - *circular_linkedlist.cpp*
@@ -76,3 +77,5 @@
 
 What's inside *stdc++.h*
 - it's just a header file which is a collection of most included libraries. So you don't have to include all libraries everytime.
+
+</pre>
