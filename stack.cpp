@@ -79,4 +79,33 @@ void print_stack(stack<int> s){
     }
 }
 
+int prefix_evaluation(string exp){
+    int str_len = exp.length()-1;
+    stack<int> s;
+    while (str_len>=0) {
+        char ch = exp[str_len];
+        if (ch=='*') {int f=s.top();s.pop(); int sec=s.top();s.pop(); s.push(f*sec); }
+        else if (ch=='/') {int f=s.top();s.pop(); int sec=s.top();s.pop(); s.push(f/sec); } 
+        else if (ch=='+') {int f=s.top();s.pop(); int sec=s.top();s.pop(); s.push(f+sec); } 
+        else if (ch=='-') {int f=s.top();s.pop(); int sec=s.top();s.pop(); s.push(f-sec); } 
+        else {s.push(ch - '0');}
+        str_len--;
+    }
+    return s.top();
+}
+
+// int postfix_evaluation(string exp){
+//     int str_len = exp.length()-1;
+//     stack<int> s;
+//     while (str_len>=0) {
+//         char ch = exp[str_len];
+//         if (ch=='*') {int f=s.top();s.pop(); int sec=s.top();s.pop(); s.push(f*sec); }
+//         else if (ch=='/') {int f=s.top();s.pop(); int sec=s.top();s.pop(); s.push(f/sec); } 
+//         else if (ch=='+') {int f=s.top();s.pop(); int sec=s.top();s.pop(); s.push(f+sec); } 
+//         else if (ch=='-') {int f=s.top();s.pop(); int sec=s.top();s.pop(); s.push(f-sec); } 
+//         else {s.push(ch - '0');}
+//         str_len--;
+//     }
+//     return s.top();
+// }
 
