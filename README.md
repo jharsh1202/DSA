@@ -78,4 +78,26 @@
 What's inside *stdc++.h*
 - it's just a header file which is a collection of most included libraries. So you don't have to include all libraries everytime.
 
+
+
+
+## 🤝 Contributing
+
+```bash
+1. Fork the repository 
+2. Do the desired changes (add/delete/modify)
+3. Make a pull request
+```
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Author
+
+👤 **Harshit Jain**
+
+ ✉️ *harshit120299@gmail.com*
+ - Linkedin: [@harshit1202](https://www.linkedin.com/in/harshit1202/)
+ - Github: [@jharsh1202](https://github.com/jharsh1202)
+
 </pre>
+
