@@ -91,6 +91,10 @@ What's inside *stdc++.h*
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+
+</pre>
+
+
 ## Author
 
 👤 **Harshit Jain**
@@ -98,6 +102,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
  ✉️ *harshit120299@gmail.com*
  - Linkedin: [@harshit1202](https://www.linkedin.com/in/harshit1202/)
  - Github: [@jharsh1202](https://github.com/jharsh1202)
-
-</pre>
-
